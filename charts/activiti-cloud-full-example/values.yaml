@@ -114,7 +114,7 @@ runtime-bundle:
   image:
     pullPolicy: Always
     repository: activiti/example-runtime-bundle
-    tag: 7.1.0-PR-528-7
+    tag: 7.1.0-PR-528-8
 
 activiti-cloud-query:
   service:
