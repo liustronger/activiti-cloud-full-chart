@@ -163,8 +163,8 @@ rabbitmq:
     create: true
   replicaCount: 1
   ingress:
-    enabled: false
-    #    hostName: "rabbitmq.jx-staging.X.X.X.X.nip.io"
+    enabled: true
+    hostName: "rabbitmq.feature-aae-1291.35.228.195.195.nip.io"    
     path: /
     annotations:
       kubernetes.io/ingress.class: nginx
