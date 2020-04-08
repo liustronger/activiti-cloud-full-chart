@@ -40,12 +40,19 @@ update-ea:
 
 build: clean
 	helm init --client-only
-	helm repo add chartmuseum http://chartmuseum.jx.35.228.195.195.nip.io
 	helm repo add activiti-cloud-helm-charts https://activiti.github.io/activiti-cloud-helm-charts/
 	helm repo add alfresco https://kubernetes-charts.alfresco.com/stable	
 	helm repo add alfresco-incubator https://kubernetes-charts.alfresco.com/incubator
 	helm dependency build
 	helm lint
+	helm upgrade ${HELM_RELEASE_NAME} . \
+		--install \
+		--set global.gateway.domain=${GLOBAL_GATEWAY_DOMAIN} \
+		--namespace ${PREVIEW_NAMESPACE} \
+		--debug \
+		--wait \
+		--dry-run
+
 
 install: clean build
 	helm upgrade ${HELM_RELEASE_NAME} . \
